@@ -42,7 +42,7 @@ conda create -n ctrl-world python==3.11
 conda activate ctrl-world
 pip install -r requirements.txt
 
-#  If you want to use ctrl-world to interact with $\pi_{0.5}$ model, fowllowing the pi official repo to install the pi model dependencies. Otherwise you can skip it.
+#  If you want to use ctrl-world to interact with $\pi_{0.5}$ model, following the pi official repo to install the pi model dependencies. Otherwise you can skip it.
 # (from https://github.com/Physical-Intelligence/openpi/tree/main)
 git clone --recurse-submodules git@github.com:Physical-Intelligence/openpi.git
 cd openpi
