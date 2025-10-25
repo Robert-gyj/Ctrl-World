@@ -294,7 +294,7 @@ if __name__ == "__main__":
     from config import wm_args
     from argparse import ArgumentParser
     parser = ArgumentParser()
-    parser.add_argument('--svg_model_path', type=str, default=None)
+    parser.add_argument('--svd_model_path', type=str, default=None)
     parser.add_argument('--clip_model_path', type=str, default=None)
     parser.add_argument('--ckpt_path', type=str, default=None)
     parser.add_argument('--dataset_root_path', type=str, default=None)
