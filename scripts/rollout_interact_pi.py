@@ -40,6 +40,7 @@ class agent():
     def __init__(self,args):
           
         # args = Args()
+        args.val_model_path = args.ckpt_path
         self.args = args
         self.accelerator = Accelerator()
         self.device = self.accelerator.device
@@ -293,7 +294,7 @@ if __name__ == "__main__":
     from config import wm_args
     from argparse import ArgumentParser
     parser = ArgumentParser()
-    parser.add_argument('--pretrained_model_path', type=str, default=None)
+    parser.add_argument('--svg_model_path', type=str, default=None)
     parser.add_argument('--clip_model_path', type=str, default=None)
     parser.add_argument('--ckpt_path', type=str, default=None)
     parser.add_argument('--dataset_root_path', type=str, default=None)
