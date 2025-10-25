@@ -114,7 +114,7 @@ class CrtlWorld(nn.Module):
         self.args = args
 
         # load from pretrained stable video diffusion
-        self.pipeline = StableVideoDiffusionPipeline.from_pretrained(args.svg_model_path)
+        self.pipeline = StableVideoDiffusionPipeline.from_pretrained(args.svd_model_path)
         # repalce the unet to support frame_level pose condition
         print("replace the unet to support action condition and frame_level pose!")
         unet = UNetSpatioTemporalConditionModel()
