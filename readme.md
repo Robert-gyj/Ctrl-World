@@ -132,7 +132,7 @@ In this section, we provide detailed instructions on how to train Ctrl-World on 
 Our experiments are run on one/two nodes each with 8 A100/H100 cards.
 
 ### 🛸 (1) Prepare dataset
-(1) Since the video diffusion model are run in latent space of image encoder, we first extract the latent sapce of the video to improve training efficiency. After download the [huggingface DROID datasets](https://huggingface.co/datasets/cadene/droid_1.0.1), you can run the following command to extract latent in parrallel:
+(1) Since the video diffusion model are run in latent space of image encoder, we first extract the latent space of the video to improve training efficiency. After download the [huggingface DROID datasets](https://huggingface.co/datasets/cadene/droid_1.0.1), you can run the following command to extract latent in parrallel:
 ```bash
 accelerate launch dataset_example/extract_latent.py --droid_hf_path ${path to droid} --droid_output_path dataset_example/droid --svd_path ${path to svd}
 ```
