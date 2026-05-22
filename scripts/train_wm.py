@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from models.pipeline_stable_video_diffusion import StableVideoDiffusionPipeline
 from models.pipeline_ctrl_world import CtrlWorldDiffusionPipeline
 from models.unet_spatio_temporal_condition import UNetSpatioTemporalConditionModel
-from models.ctrl_world import CrtlWorld
+from models.ctrl_world import CtrlWorld
 
 import numpy as np
 import torch
@@ -20,7 +20,7 @@ from decord import VideoReader, cpu
 import wandb
 import swanlab
 import mediapy
-from models.ctrl_world import CrtlWorld
+from models.ctrl_world import CtrlWorld
 from config import wm_args
 import math
 
@@ -36,7 +36,7 @@ def main(args):
     )
 
     # model and optimizer
-    model = CrtlWorld(args)
+    model = CtrlWorld(args)
     if args.ckpt_path is not None:
         print(f"Loading checkpoint from {args.ckpt_path}!")
         state_dict = torch.load(args.ckpt_path, map_location='cpu')
@@ -142,7 +142,7 @@ def main(args):
 
 def main_val(args):
     accelerator = Accelerator()
-    model = CrtlWorld(args)
+    model = CtrlWorld(args)
     # load form val_model_path
     print("load from val_model_path",args.val_model_path)
     model.load_state_dict(torch.load(args.val_model_path))
@@ -272,7 +272,7 @@ if __name__ == "__main__":
     # dataset = Dataset_mix(args,mode='val')
     # from torch.utils.data import DataLoader
     # dataloader = DataLoader(dataset, batch_size=3, shuffle=True, num_workers=2)
-    # model = CrtlWorld(args).to('cuda')
+    # model = CtrlWorld(args).to('cuda')
     # # print model parameter num
     # num_params = sum(p.numel() for p in model.parameters())
     # print(f"Number of parameters in the model: {num_params/1000000:.2f}M")
