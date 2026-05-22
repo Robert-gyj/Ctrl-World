@@ -107,9 +107,9 @@ class Action_encoder2(nn.Module):
         return action # (B, 1, hidden_size) or (B, T, hidden_size) if frame_level_cond
 
 
-class CrtlWorld(nn.Module):
+class CtrlWorld(nn.Module):
     def __init__(self, args):
-        super(CrtlWorld, self).__init__()
+        super(CtrlWorld, self).__init__()
 
         self.args = args
 

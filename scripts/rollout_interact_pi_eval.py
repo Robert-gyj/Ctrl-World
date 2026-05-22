@@ -32,7 +32,7 @@ from scipy.spatial.transform import Rotation as R
 import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from models.pipeline_ctrl_world import CtrlWorldDiffusionPipeline
-from models.ctrl_world import CrtlWorld
+from models.ctrl_world import CtrlWorld
 from models.utils import key_board_control, get_fk_solution
     
 
@@ -62,7 +62,7 @@ class agent():
 
         # load ctrl-world model
 
-        self.model = CrtlWorld(args)
+        self.model = CtrlWorld(args)
         self.model.load_state_dict(torch.load(args.val_model_path))
         self.model.to(self.accelerator.device).to(self.dtype)
         self.model.eval()
