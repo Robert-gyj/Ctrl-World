@@ -10,7 +10,7 @@ class wm_args:
     # model paths
     svd_model_path = "/cephfs/shared/llm/stable-video-diffusion-img2vid"
     clip_model_path = "/cephfs/shared/llm/clip-vit-base-patch32"
-    ckpt_path = '/cephfs/cjyyj/code/video_evaluation/output2/exp33_210_s11/checkpoint-10000.pt'
+    ckpt_path = None # set to a ctrl-world checkpoint to post-train; None trains from the SVD init
     pi_ckpt = '/cephfs/shared/llm/openpi/openpi-assets-preview/checkpoints/pi05_droid'
 
     # dataset parameters
