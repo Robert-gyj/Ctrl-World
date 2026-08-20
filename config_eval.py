@@ -163,7 +163,8 @@ class wm_args:
 
         elif self.task_type == "close_laptop":
 
-            self.val_dataset_dir = f'dataset_example/droid_new_setup_full/{self.task_type}'
+            # the shipped directory is named 'laptop', not 'close_laptop'
+            self.val_dataset_dir = 'dataset_example/droid_new_setup_full/laptop'
             repeat_num = 4
             self.val_id = ['0000', '0001', '0002', '0003', '0004']*repeat_num
             self.start_idx = [0] * len(self.val_id)
@@ -182,11 +183,11 @@ class wm_args:
                                 "stack the green block on the red block",]*repeat_num
         
         elif self.task_type == 'drawer':
-            self.val_dataset_dir = 'dataset_example/droid_new_setup_eval/drawer'
+            self.val_dataset_dir = 'dataset_example/droid_new_setup_full/drawer'
             repeat_num = 4
             self.val_id = ['0000', '0001', '0002', '0003', '0004']*repeat_num
             self.start_idx = [10]*len(self.val_id)
-            self.instruction = ['pick up the sponge and place in the drawer', 'pick up the sponge and place in the drawer', 'pick up the sponge and place in the drawer', 'pick up the sponge and place in the drawer', 'pick up the sponge and place in the drawer']
+            self.instruction = ['pick up the sponge and place in the drawer']*len(self.val_id)
             self.policy_skip_step = 3
         
         else:

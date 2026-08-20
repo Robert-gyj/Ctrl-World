@@ -110,7 +110,7 @@ We also need to download official $\pi_{0.5}$-DROID checkpoint following [offici
 *Claims: We only train Ctrl-World on opensourced DROID dataset and zero-shot transferred to our new DROID setups. The model can evaluate a policy’s instruction-following capability but also can be imprecise in modeling physical interactions.*
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 XLA_PYTHON_CLIENT_MEM_FRACTION=0.4 python scripts/rollout_interact_pi.py  --dataset_root_path dataset_example --dataset_meta_info_path dataset_meta_info --dataset_names droid_subset --svd_model_path ${path to svd folder} --clip_model_path ${path to clip folder} --ckpt_path ${path to ctrl-world ckpt} --pi_ckpt ${path to ctrl-world ckpt} --task_type ${pickplace}
+CUDA_VISIBLE_DEVICES=0 XLA_PYTHON_CLIENT_MEM_FRACTION=0.4 python scripts/rollout_interact_pi.py  --dataset_root_path dataset_example --dataset_meta_info_path dataset_meta_info --dataset_names droid_subset --svd_model_path ${path to svd folder} --clip_model_path ${path to clip folder} --ckpt_path ${path to ctrl-world ckpt} --pi_ckpt ${path to pi05-droid ckpt} --task_type ${pickplace}
 ```
 Alternatively, you can configure all parameters in config.py and run `CUDA_VISIBLE_DEVICES=0 XLA_PYTHON_CLIENT_MEM_FRACTION=0.4 python rollout_interact_pi.py`. Since the official $\pi_{0.5}$ policies are implemented in JAX, we need to set XLA_PYTHON_CLIENT_MEM_FRACTION=0.4 to prevent JAX from pre-allocating too much GPU memory.
 
@@ -118,7 +118,7 @@ Alternatively, you can configure all parameters in config.py and run `CUDA_VISIB
 In the paper, we run each category of task for 20 times. Each category of task may have 5 or 10 initial configurations and repeat for 2 or 4 times (20 times in total). You can run following command by settng `task_type` you want. All initial condition is in `dataset_example/droid_new_setup_full`.
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 XLA_PYTHON_CLIENT_MEM_FRACTION=0.4 python scripts/rollout_interact_pi_eval.py  --dataset_root_path dataset_example --dataset_meta_info_path dataset_meta_info --dataset_names droid_subset --svd_model_path ${path to svd folder} --clip_model_path ${path to clip folder} --ckpt_path ${path to ctrl-world ckpt} --pi_ckpt ${path to ctrl-world ckpt} --task_type ${fold_tower}
+CUDA_VISIBLE_DEVICES=0 XLA_PYTHON_CLIENT_MEM_FRACTION=0.4 python scripts/rollout_interact_pi_eval.py  --dataset_root_path dataset_example --dataset_meta_info_path dataset_meta_info --dataset_names droid_subset --svd_model_path ${path to svd folder} --clip_model_path ${path to clip folder} --ckpt_path ${path to ctrl-world ckpt} --pi_ckpt ${path to pi05-droid ckpt} --task_type ${towel_fold}
 ```
 
 
