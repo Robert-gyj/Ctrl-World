@@ -121,6 +121,11 @@ class EncodeLatentDataset(Dataset):
         cartesian_gripper = np.array(traj_info['observation.state.gripper_position'])[:,None]
         # print(cartesian_pose.shape, cartesian_gripper.shape)
         cartesian_states = np.concatenate((cartesian_pose, cartesian_gripper),axis=-1)[::rgb_skip].tolist()
+
+        # record joints aligned with video frames; rollout scripts read anno['joints']
+        joint_pose = np.array(traj_info['observation.state.joint_position'])
+        joint_gripper = np.array(traj_info['observation.state.gripper_position'])[:,None]
+        joint_states = np.concatenate((joint_pose, joint_gripper),axis=-1)[::rgb_skip].tolist()
         
         info = {
             "texts": [instruction],
@@ -140,6 +145,7 @@ class EncodeLatentDataset(Dataset):
                 {"latent_video_path": f"latent_videos/{data_type}/{traj_id}/2.pt"}
             ],
             'states': cartesian_states,
+            'joints': joint_states,
             'observation.state.cartesian_position': traj_info['observation.state.cartesian_position'],
             'observation.state.joint_position': traj_info['observation.state.joint_position'],
             'observation.state.gripper_position': traj_info['observation.state.gripper_position'],
