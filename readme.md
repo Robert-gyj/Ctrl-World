@@ -147,7 +147,7 @@ python dataset_meta_info/create_meta_info.py --droid_output_path ${path to proce
 ### 🛸 (2) Launch training
 After prepare the datasets, you can launch training. You can first test the environment with a small subset of droid we provided in the repo:
 ```bash
-WANDB_MODE=offline accelerate launch --main_process_port 29501 scripts/train_wm.py --dataset_root_path dataset_example --dataset_meta_info_path dataset_meta_info --dataset_names droid_subset
+WANDB_MODE=offline accelerate launch --main_process_port 29501 scripts/train_wm.py --dataset_root_path dataset_example --dataset_meta_info_path dataset_meta_info --dataset_names droid_subset --svd_model_path ${path to svd folder} --clip_model_path ${path to clip folder}
 ```
 Then you can launch the training process with whole dataset:
 ```bash
