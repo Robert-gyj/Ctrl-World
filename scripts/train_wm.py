@@ -86,7 +86,8 @@ def main(args):
    
     ############################ training ##############################
     total_batch_size = args.train_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
-    num_train_epochs = math.ceil(args.max_train_steps * args.gradient_accumulation_steps*total_batch_size / len(train_dataloader))
+    num_update_steps_per_epoch = math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
+    num_train_epochs = math.ceil(args.max_train_steps / num_update_steps_per_epoch)
     logger.info("***** Running training *****")
     logger.info(f"  Num examples = {len(train_dataset)}")
     logger.info(f"  Num Epochs = {args.num_train_epochs}")
@@ -138,6 +139,11 @@ def main(args):
                             validate_video_generation(model, val_dataset, args,global_step, args.output_dir, id, accelerator)
                     model.train()
 
+                if global_step >= args.max_train_steps:
+                    break
+
+        if global_step >= args.max_train_steps:
+            break
 
 
 def main_val(args):
